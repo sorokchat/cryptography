@@ -8,6 +8,10 @@
   ],
   "main": "dist/index.js",
   "scripts": {
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
     "build": "tsc"
   },
   "keywords": [],
