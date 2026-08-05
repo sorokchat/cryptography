@@ -1,6 +1,6 @@
 {
   "name": "@sorokchat/cryptography",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Криптографія для sorokchat месенджеру",
   "keywords": [],
   "main": "dist/index.js",
