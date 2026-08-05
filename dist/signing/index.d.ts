@@ -1,3 +1,3 @@
 export { type ISigningService } from "./signing.interface";
-export { MacService } from "./mac.service";
+export { HmacService } from "./hmac.service";
 //# sourceMappingURL=index.d.ts.map

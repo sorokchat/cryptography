@@ -1,2 +1,2 @@
-export { MacService } from "./mac.service";
+export { HmacService } from "./hmac.service";
 //# sourceMappingURL=index.js.map
