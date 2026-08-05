@@ -5,4 +5,8 @@ export {
   type IKeyGeneration,
   AesRandomKeyGenerationService,
 } from "./key-generation";
-export { DeliveringKeys, type IDeliveringService } from "./delivering";
+export {
+  DeliveringKeys,
+  type IDeliveringService,
+  EcdhService,
+} from "./delivering";
