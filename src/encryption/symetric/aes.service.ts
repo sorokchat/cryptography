@@ -1,31 +1,45 @@
 import { IEncryptionServie } from "../encryption.interface";
-import crypto, { CipherGCM, DecipherGCM } from "node:crypto";
+import crypto from "node:crypto";
 
 export class AesService implements IEncryptionServie {
-  private readonly ALGORITHM: string = "aes-256-gcm";
-  private readonly IV_LENGTH: number = 12;
+  private static readonly ALGORITHM: string = "aes-256-cbc";
 
   public async encrypt(plaintext: string, key: string): Promise<string> {
-    const iv = crypto.randomBytes(this.IV_LENGTH);
-    const cipher = crypto.createCipheriv(this.ALGORITHM, key, iv) as CipherGCM;
+    const salt = crypto.randomBytes(16);
+    const bufferKey = await this.createKeyFromPassword(key, salt);
+    const iv = crypto.randomBytes(16);
+    const cipher = crypto.createCipheriv(AesService.ALGORITHM, bufferKey, iv);
     let encrypted = cipher.update(plaintext, "utf8", "hex");
     encrypted += cipher.final("hex");
-    const authTag = cipher.getAuthTag().toString("hex");
-    return `${iv.toString("hex")}:${authTag}:${encrypted}`;
+    return `${salt.toString("hex")}:${iv.toString("hex")}:${encrypted}`;
   }
-
   public async decrypt(encrypted: string, key: string): Promise<string> {
-    const [ivHex, authTagHex, cyphertextHex] = encrypted.split(":");
-    const iv = Buffer.from(ivHex, "hex");
-    const authTag = Buffer.from(authTagHex, "hex");
+    const parts = encrypted.split(":");
+    if (parts.length !== 3)
+      throw new Error("Невірний формат зашифрованих даних");
+    const salt = Buffer.from(parts[0], "hex");
+    const iv = Buffer.from(parts[1], "hex");
+    const encryptedString = parts[2];
+    const keyBuffer = await this.createKeyFromPassword(key, salt);
     const decipher = crypto.createDecipheriv(
-      this.ALGORITHM,
-      key,
+      AesService.ALGORITHM,
+      keyBuffer,
       iv,
-    ) as DecipherGCM;
-    decipher.setAuthTag(authTag);
-    let decrypted = decipher.update(cyphertextHex, "hex", "utf8");
+    );
+    let decrypted = decipher.update(encryptedString, "hex", "utf8");
     decrypted += decipher.final("utf8");
     return decrypted;
+  }
+
+  private createKeyFromPassword(
+    password: string,
+    salt: Buffer,
+  ): Promise<Buffer> {
+    return new Promise<Buffer>((resolve, reject) => {
+      crypto.scrypt(password, salt, 32, (error, derivedKey) => {
+        if (error) reject(error);
+        else resolve(derivedKey);
+      });
+    });
   }
 }
