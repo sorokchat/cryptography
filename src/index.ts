@@ -10,3 +10,4 @@ export {
   type IDeliveringService,
   EcdhService,
 } from "./delivering";
+export { type Node, type BinaryTree, LeftBalancedBinaryTree } from "./tree";
