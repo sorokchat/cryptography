@@ -1,24 +1,37 @@
 import crypto from "node:crypto";
 export class AesService {
-    ALGORITHM = "aes-256-gcm";
-    IV_LENGTH = 12;
+    static ALGORITHM = "aes-256-cbc";
     async encrypt(plaintext, key) {
-        const iv = crypto.randomBytes(this.IV_LENGTH);
-        const cipher = crypto.createCipheriv(this.ALGORITHM, key, iv);
+        const salt = crypto.randomBytes(16);
+        const bufferKey = await this.createKeyFromPassword(key, salt);
+        const iv = crypto.randomBytes(16);
+        const cipher = crypto.createCipheriv(AesService.ALGORITHM, bufferKey, iv);
         let encrypted = cipher.update(plaintext, "utf8", "hex");
         encrypted += cipher.final("hex");
-        const authTag = cipher.getAuthTag().toString("hex");
-        return `${iv.toString("hex")}:${authTag}:${encrypted}`;
+        return `${salt.toString("hex")}:${iv.toString("hex")}:${encrypted}`;
     }
     async decrypt(encrypted, key) {
-        const [ivHex, authTagHex, cyphertextHex] = encrypted.split(":");
-        const iv = Buffer.from(ivHex, "hex");
-        const authTag = Buffer.from(authTagHex, "hex");
-        const decipher = crypto.createDecipheriv(this.ALGORITHM, key, iv);
-        decipher.setAuthTag(authTag);
-        let decrypted = decipher.update(cyphertextHex, "hex", "utf8");
+        const parts = encrypted.split(":");
+        if (parts.length !== 3)
+            throw new Error("Невірний формат зашифрованих даних");
+        const salt = Buffer.from(parts[0], "hex");
+        const iv = Buffer.from(parts[1], "hex");
+        const encryptedString = parts[2];
+        const keyBuffer = await this.createKeyFromPassword(key, salt);
+        const decipher = crypto.createDecipheriv(AesService.ALGORITHM, keyBuffer, iv);
+        let decrypted = decipher.update(encryptedString, "hex", "utf8");
         decrypted += decipher.final("utf8");
         return decrypted;
+    }
+    createKeyFromPassword(password, salt) {
+        return new Promise((resolve, reject) => {
+            crypto.scrypt(password, salt, 32, (error, derivedKey) => {
+                if (error)
+                    reject(error);
+                else
+                    resolve(derivedKey);
+            });
+        });
     }
 }
 //# sourceMappingURL=aes.service.js.map
