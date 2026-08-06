@@ -1,6 +1,6 @@
 {
   "name": "@sorokchat/cryptography",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Криптографія для sorokchat месенджеру",
   "keywords": [],
   "access": "public",
