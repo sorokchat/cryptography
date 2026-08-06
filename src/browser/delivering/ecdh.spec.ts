@@ -1,4 +1,4 @@
 import { runDeliveringTests } from "../../common";
 import { EcdhService } from "./ecdh.service";
 
-runDeliveringTests("Server", () => new EcdhService());
+runDeliveringTests("Browser", () => new EcdhService());
