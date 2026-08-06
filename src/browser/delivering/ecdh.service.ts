@@ -8,8 +8,8 @@ export class EcdhService implements IDeliveringService {
     const ec = new EC(EcdhService.CURVE);
     const keyPair = ec.genKeyPair();
     return {
-      privateKey: keyPair.getPrivate("hex"),
-      publicKey: keyPair.getPublic(false, "hex"),
+      privateKey: keyPair.getPrivate("hex").padStart(64, "0"),
+      publicKey: keyPair.getPublic(false, "hex").padStart(130, "0"),
     };
   }
 
