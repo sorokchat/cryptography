@@ -27,6 +27,6 @@ export class EcdhService implements IDeliveringService {
     const keyPair = ec.keyFromPrivate(privateKey, "hex");
     const otherPub = ec.keyFromPublic(otherPublicKey, "hex");
     const shared = keyPair.derive(otherPub.getPublic());
-    return shared.toString("hex");
+    return shared.toString("hex").padStart(64, "0");
   }
 }

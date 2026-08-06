@@ -16,4 +16,5 @@ export {
   type KeyDerivationFunction,
   type KeyDerivationParameters,
   runDerivationTests,
+  runKeyGenerationTests,
 } from "./keys";

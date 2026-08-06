@@ -1,1 +1,1 @@
-export { type IKeyGeneration } from "./symmetric";
+export { type IKeyGeneration, runKeyGenerationTests } from "./symmetric";
