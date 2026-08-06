@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1786037958273" clover="3.2.0">
-  <project timestamp="1786037958273" name="All files">
-    <metrics statements="317" coveredstatements="307" conditionals="82" coveredconditionals="74" methods="70" coveredmethods="68" elements="469" coveredelements="449" complexity="0" loc="317" ncloc="317" packages="15" files="19" classes="19"/>
+<coverage generated="1786039628906" clover="3.2.0">
+  <project timestamp="1786039628906" name="All files">
+    <metrics statements="380" coveredstatements="370" conditionals="91" coveredconditionals="83" methods="83" coveredmethods="81" elements="554" coveredelements="534" complexity="0" loc="380" ncloc="380" packages="18" files="23" classes="23"/>
     <package name="browser.delivering">
       <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
       <file name="ecdh.service.ts" path="D:\progects\startups\sorokchat\cryptography\src\browser\delivering\ecdh.service.ts">
@@ -84,27 +84,50 @@
         <line num="10" count="32" type="stmt"/>
       </file>
     </package>
+    <package name="browser.keys.derivation">
+      <metrics statements="15" coveredstatements="15" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
+      <file name="hkdf.service.ts" path="D:\progects\startups\sorokchat\cryptography\src\browser\keys\derivation\hkdf.service.ts">
+        <metrics statements="15" coveredstatements="15" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="10" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
+        <line num="14" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="11" type="stmt"/>
+        <line num="21" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="11" type="stmt"/>
+        <line num="29" count="11" type="stmt"/>
+        <line num="40" count="11" type="stmt"/>
+        <line num="41" count="11" type="stmt"/>
+        <line num="42" count="336" type="stmt"/>
+      </file>
+    </package>
     <package name="common">
-      <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\index.ts">
-        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="5" count="6" type="stmt"/>
-        <line num="6" count="6" type="stmt"/>
-        <line num="7" count="6" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="12" count="6" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="8" type="stmt"/>
       </file>
     </package>
     <package name="common.delivering">
       <metrics statements="38" coveredstatements="38" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
       <file name="index.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\delivering\index.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="6" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
       </file>
       <file name="tests.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\delivering\tests.ts">
         <metrics statements="37" coveredstatements="37" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
-        <line num="1" count="6" type="stmt"/>
+        <line num="1" count="8" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
@@ -147,11 +170,11 @@
       <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
       <file name="index.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\encryption\index.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="6" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
       </file>
       <file name="tests.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\encryption\tests.ts">
         <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
-        <line num="1" count="6" type="stmt"/>
+        <line num="1" count="8" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
@@ -171,11 +194,11 @@
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <file name="index.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\hashing\index.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="6" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
       </file>
       <file name="tests.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\hashing\tests.ts">
         <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-        <line num="2" count="6" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
@@ -187,19 +210,80 @@
         <line num="18" count="2" type="stmt"/>
       </file>
     </package>
+    <package name="common.keys">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\keys\index.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="common.keys.derivation">
+      <metrics statements="44" coveredstatements="44" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="11"/>
+      <file name="index.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\keys\derivation\index.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="8" type="stmt"/>
+      </file>
+      <file name="tests.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\keys\derivation\tests.ts">
+        <metrics statements="43" coveredstatements="43" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="11"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="16" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
+        <line num="64" count="2" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="74" count="2" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
+        <line num="87" count="2" type="stmt"/>
+        <line num="91" count="2" type="stmt"/>
+        <line num="95" count="2" type="stmt"/>
+        <line num="98" count="2" type="stmt"/>
+        <line num="99" count="2" type="stmt"/>
+        <line num="104" count="2" type="stmt"/>
+        <line num="108" count="2" type="stmt"/>
+        <line num="112" count="2" type="stmt"/>
+        <line num="115" count="2" type="stmt"/>
+        <line num="116" count="2" type="stmt"/>
+        <line num="120" count="2" type="stmt"/>
+        <line num="121" count="2" type="stmt"/>
+        <line num="122" count="2" type="stmt"/>
+      </file>
+    </package>
     <package name="common.tree">
       <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\tree\index.ts">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="4" count="0" type="stmt"/>
-        <line num="5" count="6" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
       </file>
     </package>
     <package name="common.tree.binary">
       <metrics statements="118" coveredstatements="116" conditionals="58" coveredconditionals="55" methods="29" coveredmethods="29"/>
       <file name="index.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\tree\binary\index.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="6" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
       </file>
       <file name="left-balanced-binary-tree.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\tree\binary\left-balanced-binary-tree.ts">
         <metrics statements="117" coveredstatements="115" conditionals="58" coveredconditionals="55" methods="29" coveredmethods="29"/>
