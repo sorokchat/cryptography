@@ -11,3 +11,8 @@ export {
   EcdhService,
 } from "./delivering";
 export { type Node, type BinaryTree, LeftBalancedBinaryTree } from "./tree";
+export {
+  type KeyDerivationFunction,
+  type KeyDerivationParameters,
+  HkdfService,
+} from "./key-derivation-function";
