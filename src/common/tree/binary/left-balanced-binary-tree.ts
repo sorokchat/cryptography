@@ -1,6 +1,12 @@
 import { type BinaryTree } from "./binary-tree.interface";
 import { type Node } from "./node";
 
+type SerializedNode<T> =
+  | (Omit<Node<T>, "left" | "right"> & {
+    left: SerializedNode<T>;
+    right: SerializedNode<T>;
+  })
+  | null;
 export class LeftBalancedBinaryTree<T> implements BinaryTree<T> {
   private root: Node<T> | null = null;
   private readonly map: Map<number, Node<T>> = new Map();
@@ -8,6 +14,20 @@ export class LeftBalancedBinaryTree<T> implements BinaryTree<T> {
 
   public getRoot(): Node<T> | null {
     return this.root;
+  }
+
+  public serialize(): string {
+    if (!this.root) throw new Error("Дерево пусте");
+    return JSON.stringify(this.serializeNode(this.root));
+  }
+
+  public deserialize(json: string): void {
+    this.root = null;
+    this.map.clear();
+    this.nextId = 1;
+    const rootData = JSON.parse(json);
+    if (!rootData || typeof rootData !== 'object' || !('data' in rootData)) return;
+    this.root = this.buildNode(rootData) ?? null;
   }
 
   public getNode(id: number): Node<T> | null {
@@ -259,5 +279,35 @@ export class LeftBalancedBinaryTree<T> implements BinaryTree<T> {
       this.isBalancedRecursive(node.left) &&
       this.isBalancedRecursive(node.right)
     );
+  }
+
+  private serializeNode(node: Node<T> | undefined | null): SerializedNode<T> {
+    if (!node) return null;
+    return {
+      id: node.id,
+      data: node.data,
+      isLeaf: node.isLeaf,
+      left: this.serializeNode(node.left),
+      right: this.serializeNode(node.right),
+    };
+  }
+
+  private buildNode(
+    data: Node<T> | undefined,
+    parent?: Node<T>,
+  ): Node<T> | null {
+    if (!data) return null;
+    const node: Node<T> = {
+      id: this.nextId++,
+      data: data.data,
+      isLeaf: data.isLeaf,
+      parent,
+    };
+    node.left = this.buildNode(data.left, node) ?? undefined;
+    node.right = this.buildNode(data.right, node) ?? undefined;
+    if (node.left) node.left.parent = node;
+    if (node.right) node.right.parent = node;
+    this.map.set(node.id, node);
+    return node;
   }
 }

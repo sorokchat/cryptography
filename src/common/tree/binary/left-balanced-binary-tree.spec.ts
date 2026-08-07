@@ -271,4 +271,145 @@ describe("Left balanced binary tree", () => {
     expect(tree.isBalanced()).toBeTruthy();
     expect(new Set(tree.toArray())).toEqual(new Set([1, 2, 3, 4, 6, 7]));
   });
+  describe("serialize", () => {
+    it("should throw error when tree is empty", () => {
+      expect(() => tree.serialize()).toThrow("Дерево пусте");
+    });
+
+    it("should serialize a single-node tree correctly", () => {
+      tree.setRoot(42);
+      const json = tree.serialize();
+      expect(json).toBeDefined();
+      expect(() => JSON.parse(json)).not.toThrow();
+      const parsed = JSON.parse(json);
+      expect(parsed.data).toBe(42);
+      expect(parsed.isLeaf).toBe(true);
+      expect(parsed.left).toBeNull();
+      expect(parsed.right).toBeNull();
+    });
+
+    it("should serialize a non-empty tree correctly", () => {
+      [1, 2, 3, 4, 5].forEach((v) => tree.addLeaf(v));
+      const json = tree.serialize();
+      expect(json).toBeDefined();
+      expect(() => JSON.parse(json)).not.toThrow();
+      const parsed = JSON.parse(json);
+      expect(parsed.data).toBe(1);
+      expect(parsed.isLeaf).toBe(false);
+      expect(parsed.left.data).toBe(2);
+      expect(parsed.left.isLeaf).toBe(false);
+      expect(parsed.right.data).toBe(3);
+      expect(parsed.right.isLeaf).toBe(true);
+      expect(parsed.left.left.data).toBe(4);
+      expect(parsed.left.left.isLeaf).toBe(true);
+      expect(parsed.left.right.data).toBe(5);
+      expect(parsed.left.right.isLeaf).toBe(true);
+    });
+  });
+
+  describe("deserialize", () => {
+    it("should restore tree from serialized JSON", () => {
+      const original = new LeftBalancedBinaryTree<number>();
+      [1, 2, 3, 4, 5].forEach((v) => original.addLeaf(v));
+      const json = original.serialize();
+      const restored = new LeftBalancedBinaryTree<number>();
+      restored.deserialize(json);
+      const originalInorder: number[] = [];
+      const restoredInorder: number[] = [];
+      original.inorder((v) => originalInorder.push(v));
+      restored.inorder((v) => restoredInorder.push(v));
+      expect(restoredInorder).toEqual(originalInorder);
+      expect(restored.size()).toBe(original.size());
+      expect(restored.toArray()).toEqual(original.toArray());
+      const originalLeaves = new Set<number>();
+      original.inorder((v) => {
+        if (v === 4 || v === 5 || v === 3) originalLeaves.add(v);
+      });
+      const restoredLeaves = new Set<number>();
+      restored.inorder((v) => {
+        if (v === 4 || v === 5 || v === 3) restoredLeaves.add(v);
+      });
+      expect(restoredLeaves).toEqual(originalLeaves);
+    });
+
+    it("should handle empty tree serialization/deserialization", () => {
+      const empty = new LeftBalancedBinaryTree<number>();
+      expect(() => empty.deserialize("")).toThrow();
+    });
+
+    it("should throw error on invalid JSON", () => {
+      const restored = new LeftBalancedBinaryTree<number>();
+      expect(() => restored.deserialize("invalid json")).toThrow();
+    });
+
+    it("should handle invalid JSON by leaving tree empty", () => {
+      const restored = new LeftBalancedBinaryTree<number>();
+      const invalidJson = JSON.stringify({});
+      restored.deserialize(invalidJson);
+      expect(restored.isEmpty()).toBeTruthy();
+      expect(restored.size()).toBe(0);
+    });
+
+    it("should restore tree with proper parent references", () => {
+      const original = new LeftBalancedBinaryTree<number>();
+      [1, 2, 3, 4, 5].forEach((v) => original.addLeaf(v));
+      const json = original.serialize();
+      const restored = new LeftBalancedBinaryTree<number>();
+      restored.deserialize(json);
+      const root = restored.getRoot();
+      expect(root).not.toBeNull();
+      expect(root!.parent).toBeUndefined();
+      const left = root!.left;
+      expect(left!.parent).toBe(root);
+      const right = root!.right;
+      expect(right!.parent).toBe(root);
+      const leftLeft = left!.left;
+      expect(leftLeft!.parent).toBe(left);
+      const leftRight = left!.right;
+      expect(leftRight!.parent).toBe(left);
+    });
+
+    it("should be independent clone (changes to original do not affect restored)", () => {
+      const original = new LeftBalancedBinaryTree<number>();
+      [1, 2, 3, 4].forEach((v) => original.addLeaf(v));
+      const json = original.serialize();
+      const restored = new LeftBalancedBinaryTree<number>();
+      restored.deserialize(json);
+      original.removeNode(original.find((v) => v === 4)!.id);
+      expect(original.size()).toBe(3);
+      expect(restored.size()).toBe(4);
+      expect(new Set(restored.toArray())).toEqual(new Set([1, 2, 3, 4]));
+    });
+
+    it("should handle complex tree with many nodes", () => {
+      const original = new LeftBalancedBinaryTree<number>();
+      for (let i = 1; i <= 15; i++) {
+        original.addLeaf(i);
+      }
+      const json = original.serialize();
+      const restored = new LeftBalancedBinaryTree<number>();
+      restored.deserialize(json);
+      expect(restored.size()).toBe(15);
+      expect(new Set(restored.toArray())).toEqual(new Set(original.toArray()));
+      expect(restored.isBalanced()).toBe(true);
+      expect(restored.height()).toBe(original.height());
+    });
+  });
+
+  describe("round-trip serialization", () => {
+    it("should preserve tree structure after serialize + deserialize", () => {
+      const original = new LeftBalancedBinaryTree<number>();
+      [5, 3, 8, 1, 4, 6, 9].forEach((v) => original.addLeaf(v));
+      const json = original.serialize();
+      const restored = new LeftBalancedBinaryTree<number>();
+      restored.deserialize(json);
+      expect(restored.size()).toBe(original.size());
+      expect(restored.height()).toBe(original.height());
+      expect(restored.isBalanced()).toBe(original.isBalanced());
+      expect(new Set(restored.toArray())).toEqual(new Set(original.toArray()));
+      expect(restored.getRoot()?.data).toBe(original.getRoot()?.data);
+      expect(restored.find((v) => v === 8)?.data).toBe(8);
+      expect(original.find((v) => v === 8)?.data).toBe(8);
+    });
+  });
 });

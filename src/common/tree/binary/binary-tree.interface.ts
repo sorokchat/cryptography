@@ -22,4 +22,6 @@ export interface BinaryTree<T> {
   isEmpty(): boolean;
   clone(): BinaryTree<T>;
   toArray(): T[];
+  serialize(): string;
+  deserialize(json: string): void;
 }
