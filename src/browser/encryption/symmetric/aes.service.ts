@@ -1,54 +1,53 @@
-import { IEncryptionServie } from "../../../common";
+import type { IEncryptionOptions, IEncryptionServie } from "../../../common";
 
 export class AesService implements IEncryptionServie {
   private static readonly ITERATIONS = 100000;
   private static readonly HASH = "SHA-256";
   private static readonly KEY_LENGTH = 32;
+  private static readonly ALGORITHM: string = "AES-CBC";
 
-  public async encrypt(plaintext: string, key: string): Promise<string> {
-    const salt = crypto.getRandomValues(new Uint8Array(16));
-    const keyBuffer = await this.deriveKey(key, salt);
-    const iv = crypto.getRandomValues(new Uint8Array(12));
+  public async encrypt(
+    plaintext: string,
+    key: string,
+    { salt, iv }: IEncryptionOptions,
+  ): Promise<string> {
+    const keyBuffer = await this.deriveKey(key, this.hexToBuffer(salt));
+    const ivBuffer = this.hexToBuffer(iv);
     const cryptoKey = await crypto.subtle.importKey(
       "raw",
       new Uint8Array(keyBuffer),
-      { name: "AES-GCM" },
+      { name: AesService.ALGORITHM },
       false,
       ["encrypt"],
     );
     const encoder = new TextEncoder();
     const data = encoder.encode(plaintext);
     const encrypted = await crypto.subtle.encrypt(
-      { name: "AES-GCM", iv },
+      { name: AesService.ALGORITHM, iv: new Uint8Array(ivBuffer) },
       cryptoKey,
       data,
     );
-    const saltHex = this.bufferToHex(salt);
-    const ivHex = this.bufferToHex(iv);
-    const encryptedHex = this.bufferToHex(new Uint8Array(encrypted));
-    return `${saltHex}:${ivHex}:${encryptedHex}`;
+    return this.bufferToHex(new Uint8Array(encrypted));
   }
 
-  public async decrypt(encrypted: string, key: string): Promise<string> {
-    const parts = encrypted.split(":");
-    if (parts.length !== 3) {
-      throw new Error("Невірний формат зашифрованих даних");
-    }
-
-    const [saltHex, ivHex, encryptedHex] = parts;
-    const salt = this.hexToBuffer(saltHex);
-    const iv = this.hexToBuffer(ivHex);
-    const data = this.hexToBuffer(encryptedHex);
-    const keyBuffer = await this.deriveKey(key, salt);
+  public async decrypt(
+    encrypted: string,
+    key: string,
+    { iv, salt }: IEncryptionOptions,
+  ): Promise<string> {
+    const saltBuffer = this.hexToBuffer(salt);
+    const ivBuffer = this.hexToBuffer(iv);
+    const data = this.hexToBuffer(encrypted);
+    const keyBuffer = await this.deriveKey(key, saltBuffer);
     const cryptoKey = await crypto.subtle.importKey(
       "raw",
       new Uint8Array(keyBuffer),
-      { name: "AES-GCM" },
+      { name: AesService.ALGORITHM },
       false,
       ["decrypt"],
     );
     const decrypted = await crypto.subtle.decrypt(
-      { name: "AES-GCM", iv: new Uint8Array(iv) },
+      { name: AesService.ALGORITHM, iv: new Uint8Array(ivBuffer) },
       cryptoKey,
       new Uint8Array(data),
     );
@@ -92,15 +91,10 @@ export class AesService implements IEncryptionServie {
   }
 
   private hexToBuffer(hex: string): Uint8Array {
-    if (!/^[0-9a-fA-F]+$/.test(hex)) {
-      throw new Error("Hex-рядок повинен містити лише шістнадцяткові символи");
-    }
-    if (hex.length % 2 !== 0) {
-      throw new Error("Hex-рядок повинен мати парну довжину");
-    }
-    const bytes = new Uint8Array(hex.length / 2);
-    for (let i = 0; i < hex.length; i += 2) {
-      bytes[i / 2] = parseInt(hex.substring(i, i + 2), 16);
+    const cleaned = hex.replace(/\s/g, "");
+    const bytes = new Uint8Array(cleaned.length / 2);
+    for (let i = 0; i < cleaned.length; i += 2) {
+      bytes[i / 2] = parseInt(cleaned.substring(i, i + 2), 16);
     }
     return bytes;
   }

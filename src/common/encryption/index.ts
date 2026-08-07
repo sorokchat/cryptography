@@ -1,2 +1,3 @@
 export { type IEncryptionServie } from "./encryption.interface";
-export { runEncryptionTests } from "./tests";
+export { IEncryptionOptions } from "./encryption-options.interface";
+export { runAesTests } from "./tests";

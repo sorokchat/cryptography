@@ -3,7 +3,11 @@ export {
   type DeliveringKeys,
   runEcdhTests,
 } from "./delivering";
-export { type IEncryptionServie, runEncryptionTests } from "./encryption";
+export {
+  type IEncryptionServie,
+  type IEncryptionOptions,
+  runAesTests,
+} from "./encryption";
 export { type IHashingService, runSha256Tests } from "./hashing";
 export {
   type BinaryTree,

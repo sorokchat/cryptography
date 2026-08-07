@@ -1,4 +1,4 @@
-import { runEncryptionTests } from "../../../common";
+import { runAesTests } from "../../../common";
 import { AesService } from "./aes.service";
 
-runEncryptionTests("Browser", () => new AesService());
+runAesTests("Browser", () => new AesService());
