@@ -6,7 +6,8 @@ export class AesRandomKeyGenerationService implements IKeyGeneration {
   public async generation(_seed?: string): Promise<string> {
     const bytes = new Uint8Array(this.bytesCount);
     crypto.getRandomValues(bytes);
-    const decoder = new TextDecoder("utf-8", { fatal: false });
-    return decoder.decode(bytes);
+    return Array.from(bytes)
+      .map((buffer) => buffer.toString(16).padStart(2, "0"))
+      .join("");
   }
 }
