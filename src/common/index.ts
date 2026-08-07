@@ -10,7 +10,7 @@ export {
   type BinaryNode,
   LeftBalancedBinaryTree,
 } from "./tree";
-export { type ISigningService } from "./signing";
+export { type ISigningService, runSigningTests } from "./signing";
 export {
   type IKeyGeneration,
   type KeyDerivationFunction,

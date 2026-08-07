@@ -3,3 +3,4 @@ export { AesService } from "./encryption";
 export { EcdhService } from "./delivering";
 export { Sha256Service } from "./hashing";
 export { HkdfService, AesRandomKeyGenerationService } from "./keys";
+export { HmacService } from "./signing";
