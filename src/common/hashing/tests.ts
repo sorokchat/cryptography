@@ -1,7 +1,7 @@
 import { type IHashingService } from "../../common";
 import { describe, it, beforeEach, expect } from "@jest/globals";
 
-export function runHashingTests(
+export function runSha256Tests(
   environment: string,
   factory: () => IHashingService,
 ): void {

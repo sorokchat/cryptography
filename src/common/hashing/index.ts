@@ -1,2 +1,2 @@
 export { type IHashingService } from "./hashing.interface";
-export { runHashingTests } from "./tests";
+export { runSha256Tests } from "./tests";

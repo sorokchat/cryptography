@@ -4,7 +4,7 @@ export {
   runDeliveringTests,
 } from "./delivering";
 export { type IEncryptionServie, runEncryptionTests } from "./encryption";
-export { type IHashingService, runHashingTests } from "./hashing";
+export { type IHashingService, runSha256Tests } from "./hashing";
 export {
   type BinaryTree,
   type BinaryNode,

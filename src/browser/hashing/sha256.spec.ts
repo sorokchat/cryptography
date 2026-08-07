@@ -1,3 +1,3 @@
-import { runHashingTests } from "../../common";
+import { runSha256Tests } from "../../common";
 import { Sha256Service } from "./sha256.service";
-runHashingTests("Browser", () => new Sha256Service());
+runSha256Tests("Browser", () => new Sha256Service());
