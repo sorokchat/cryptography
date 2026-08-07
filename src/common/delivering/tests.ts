@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, expect } from "@jest/globals";
 import { type IDeliveringService } from "../../common";
 
-export function runDeliveringTests(
+export function runEcdhTests(
   enviornment: string,
   factory: () => IDeliveringService,
 ): void {

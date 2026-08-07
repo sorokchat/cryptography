@@ -1,4 +1,4 @@
-import { runDeliveringTests } from "../../common";
+import { runEcdhTests } from "../../common";
 import { EcdhService } from "./ecdh.service";
 
-runDeliveringTests("Browser", () => new EcdhService());
+runEcdhTests("Browser", () => new EcdhService());

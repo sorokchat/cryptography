@@ -1,7 +1,7 @@
 export {
   type IDeliveringService,
   type DeliveringKeys,
-  runDeliveringTests,
+  runEcdhTests,
 } from "./delivering";
 export { type IEncryptionServie, runEncryptionTests } from "./encryption";
 export { type IHashingService, runSha256Tests } from "./hashing";
