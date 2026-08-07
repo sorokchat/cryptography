@@ -1,12 +1,28 @@
 import crypto from "node:crypto";
-import { type IDeliveringService, type DeliveringKeys } from "../../common";
+import {
+  type IDeliveringService,
+  type DeliveringKeys,
+  type IHashingService,
+} from "../../common";
 
 export class EcdhService implements IDeliveringService {
   private static readonly CURVE: string = "prime256v1";
 
-  public async generateKeys(): Promise<DeliveringKeys> {
+  constructor(private readonly hashing: IHashingService) {}
+
+  public async generateKeys(seed?: string): Promise<DeliveringKeys> {
     const ecdh = crypto.createECDH(EcdhService.CURVE);
-    ecdh.generateKeys();
+    if (seed) {
+      const hash = await this.hashing.hash(seed);
+      const number = BigInt(
+        "0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551",
+      );
+      const privateKeyBigInt = BigInt("0x" + hash) % number;
+      const privateKeyHex = privateKeyBigInt.toString(16).padStart(64, "0");
+      ecdh.setPrivateKey(privateKeyHex, "hex");
+    } else {
+      ecdh.generateKeys();
+    }
     const publicKey = ecdh.getPublicKey("hex");
     const privateKey = ecdh.getPrivateKey("hex");
     return {

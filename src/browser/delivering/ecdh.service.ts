@@ -1,12 +1,27 @@
 import { ec as EC } from "elliptic";
-import { type IDeliveringService, type DeliveringKeys } from "../../common";
+import {
+  type IDeliveringService,
+  type DeliveringKeys,
+  type IHashingService,
+} from "../../common";
 
 export class EcdhService implements IDeliveringService {
   private static readonly CURVE = "p256";
 
-  public async generateKeys(): Promise<DeliveringKeys> {
+  constructor(private readonly hashing: IHashingService) {}
+
+  public async generateKeys(seed?: string): Promise<DeliveringKeys> {
     const ec = new EC(EcdhService.CURVE);
-    const keyPair = ec.genKeyPair();
+    let keyPair: EC.KeyPair;
+    if (seed) {
+      const hash = await this.hashing.hash(seed);
+      const bigNumber = BigInt("0x" + ec.curve.n.toString(16));
+      const privateKey = BigInt("0x" + hash) % bigNumber;
+      const privateHex = privateKey.toString(16).padStart(64, "0");
+      keyPair = ec.keyFromPrivate(privateHex, "hex");
+    } else {
+      keyPair = ec.genKeyPair();
+    }
     return {
       privateKey: keyPair.getPrivate("hex").padStart(64, "0"),
       publicKey: keyPair.getPublic(false, "hex").padStart(130, "0"),
