@@ -19,6 +19,6 @@ export {
   type IKeyGeneration,
   type KeyDerivationFunction,
   type KeyDerivationParameters,
-  runDerivationTests,
+  runHkdfTests,
   runKeyGenerationTests,
 } from "./keys";

@@ -4,7 +4,7 @@ import {
   type KeyDerivationParameters,
 } from "../../../common";
 
-export function runDerivationTests(
+export function runHkdfTests(
   enviornment: string,
   factorty: () => KeyDerivationFunction,
 ): void {

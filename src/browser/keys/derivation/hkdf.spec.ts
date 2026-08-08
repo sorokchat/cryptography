@@ -1,4 +1,4 @@
-import { runDerivationTests } from "../../../common";
+import { runHkdfTests } from "../../../common";
 import { HkdfService } from "./hkdf.service";
 
-runDerivationTests("Browser", () => new HkdfService());
+runHkdfTests("Browser", () => new HkdfService());

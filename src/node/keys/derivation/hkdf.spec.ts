@@ -1,4 +1,4 @@
 import { HkdfService } from "./hkdf.service";
-import { runDerivationTests } from "../../../common";
+import { runHkdfTests } from "../../../common";
 
-runDerivationTests("Server", () => new HkdfService());
+runHkdfTests("Server", () => new HkdfService());
