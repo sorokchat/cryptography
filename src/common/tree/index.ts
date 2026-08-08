@@ -1,5 +1,1 @@
-export {
-  type BinaryTree,
-  type Node as BinaryNode,
-  LeftBalancedBinaryTree,
-} from "./binary";
+export { BinaryTree, type Comparator, Equals } from "./binary";

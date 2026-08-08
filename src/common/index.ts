@@ -9,11 +9,7 @@ export {
   runAesTests,
 } from "./encryption";
 export { type IHashingService, runSha256Tests } from "./hashing";
-export {
-  type BinaryTree,
-  type BinaryNode,
-  LeftBalancedBinaryTree,
-} from "./tree";
+export { BinaryTree, type Comparator, Equals } from "./tree";
 export { type ISigningService, runHmacTests } from "./signing";
 export {
   type IKeyGeneration,
