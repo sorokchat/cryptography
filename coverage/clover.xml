@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1786173292684" clover="3.2.0">
-  <project timestamp="1786173292684" name="All files">
-    <metrics statements="515" coveredstatements="509" conditionals="117" coveredconditionals="109" methods="118" coveredmethods="118" elements="750" coveredelements="736" complexity="0" loc="515" ncloc="515" packages="23" files="32" classes="32"/>
+<coverage generated="1786176324640" clover="3.2.0">
+  <project timestamp="1786176324641" name="All files">
+    <metrics statements="524" coveredstatements="518" conditionals="117" coveredconditionals="110" methods="120" coveredmethods="120" elements="761" coveredelements="748" complexity="0" loc="524" ncloc="524" packages="23" files="32" classes="32"/>
     <package name="browser.delivering">
       <metrics statements="22" coveredstatements="22" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
       <file name="ecdh.service.ts" path="D:\progects\startups\sorokchat\cryptography\src\browser\delivering\ecdh.service.ts">
@@ -34,12 +34,12 @@
       <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <file name="aes.service.ts" path="D:\progects\startups\sorokchat\cryptography\src\browser\encryption\symmetric\aes.service.ts">
         <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-        <line num="3" count="2" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
@@ -54,18 +54,18 @@
         <line num="49" count="1" type="stmt"/>
         <line num="55" count="1" type="stmt"/>
         <line num="56" count="1" type="stmt"/>
-        <line num="63" count="2" type="stmt"/>
-        <line num="64" count="2" type="stmt"/>
-        <line num="66" count="2" type="stmt"/>
-        <line num="74" count="2" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="64" count="3" type="stmt"/>
+        <line num="66" count="3" type="stmt"/>
+        <line num="74" count="3" type="stmt"/>
         <line num="84" count="2" type="stmt"/>
         <line num="88" count="1" type="stmt"/>
         <line num="89" count="16" type="stmt"/>
-        <line num="94" count="5" type="stmt"/>
-        <line num="95" count="5" type="stmt"/>
-        <line num="96" count="5" type="stmt"/>
-        <line num="97" count="56" type="stmt"/>
-        <line num="99" count="5" type="stmt"/>
+        <line num="94" count="6" type="stmt"/>
+        <line num="95" count="6" type="stmt"/>
+        <line num="96" count="6" type="stmt"/>
+        <line num="97" count="58" type="stmt"/>
+        <line num="99" count="6" type="stmt"/>
       </file>
     </package>
     <package name="browser.hashing">
@@ -256,29 +256,38 @@
       </file>
     </package>
     <package name="common.encryption">
-      <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+      <metrics statements="26" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
       <file name="index.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\encryption\index.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="2" count="12" type="stmt"/>
         <line num="3" count="12" type="stmt"/>
       </file>
       <file name="tests.ts" path="D:\progects\startups\sorokchat\cryptography\src\common\encryption\tests.ts">
-        <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <metrics statements="24" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
         <line num="1" count="12" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
         <line num="24" count="2" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
         <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
       </file>
     </package>
     <package name="common.hashing">
@@ -601,18 +610,18 @@
       </file>
     </package>
     <package name="node.encryption.symmetric">
-      <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="5"/>
+      <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
       <file name="aes.service.ts" path="D:\progects\startups\sorokchat\cryptography\src\node\encryption\symmetric\aes.service.ts">
-        <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="5"/>
+        <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
@@ -624,9 +633,9 @@
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
-        <line num="46" count="2" type="stmt"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="54" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="54" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="55" count="2" type="stmt"/>
       </file>
     </package>

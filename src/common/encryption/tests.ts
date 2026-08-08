@@ -1,5 +1,6 @@
-import { beforeEach, describe, expect, it } from "@jest/globals";
+import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 import { type IEncryptionOptions, type IEncryptionServie } from ".";
+import nodeCrypto from "node:crypto";
 
 export function runAesTests(
   environment: string,
@@ -17,6 +18,7 @@ export function runAesTests(
 
     beforeEach(() => {
       service = factory();
+      jest.clearAllMocks();
     });
 
     it("should encrypt correctly with correct password", async () => {
@@ -27,6 +29,25 @@ export function runAesTests(
     it("should decrypt correctly with correct password", async () => {
       const result = await service.decrypt(encrypted, password, options);
       expect(result).toBe(plaintext);
+    });
+
+    it("should throw error, salf or password incorrect", async () => {
+      const password: string = "somepassword";
+      const saltText: string = "643";
+      const fakeError = new Error("Помилка PBKDF2");
+      jest
+        .spyOn(nodeCrypto, "pbkdf2")
+        .mockImplementation(
+          (_password, _salt, _iterations, _keyLength, _digest, callback) => {
+            callback(fakeError, Buffer.from(""));
+          },
+        );
+      expect(
+        service.encrypt(plaintext, password, {
+          iv: options.iv,
+          salt: saltText,
+        }),
+      ).rejects.toThrow();
     });
   });
 }
