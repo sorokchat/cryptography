@@ -1,2 +1,2 @@
 export { type ISigningService } from "./signing.interface";
-export { runSigningTests } from "./tests";
+export { runHmacTests } from "./tests";

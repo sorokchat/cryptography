@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1786176324640" clover="3.2.0">
-  <project timestamp="1786176324641" name="All files">
-    <metrics statements="524" coveredstatements="518" conditionals="117" coveredconditionals="110" methods="120" coveredmethods="120" elements="761" coveredelements="748" complexity="0" loc="524" ncloc="524" packages="23" files="32" classes="32"/>
+<coverage generated="1786178923235" clover="3.2.0">
+  <project timestamp="1786178923235" name="All files">
+    <metrics statements="507" coveredstatements="503" conditionals="108" coveredconditionals="104" methods="117" coveredmethods="117" elements="732" coveredelements="724" complexity="0" loc="507" ncloc="507" packages="23" files="32" classes="32"/>
     <package name="browser.delivering">
       <metrics statements="22" coveredstatements="22" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
       <file name="ecdh.service.ts" path="D:\progects\startups\sorokchat\cryptography\src\browser\delivering\ecdh.service.ts">
@@ -119,40 +119,23 @@
       </file>
     </package>
     <package name="browser.signing">
-      <metrics statements="31" coveredstatements="29" conditionals="9" coveredconditionals="6" methods="8" coveredmethods="8"/>
+      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
       <file name="hmac.service.ts" path="D:\progects\startups\sorokchat\cryptography\src\browser\signing\hmac.service.ts">
-        <metrics statements="31" coveredstatements="29" conditionals="9" coveredconditionals="6" methods="8" coveredmethods="8"/>
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
         <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
-        <line num="15" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
         <line num="19" count="3" type="stmt"/>
         <line num="20" count="3" type="stmt"/>
         <line num="21" count="3" type="stmt"/>
-        <line num="31" count="3" type="stmt"/>
-        <line num="32" count="3" type="stmt"/>
-        <line num="33" count="3" type="stmt"/>
-        <line num="34" count="3" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
-        <line num="51" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="52" count="1" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="59" count="3" type="stmt"/>
-        <line num="60" count="96" type="stmt"/>
-        <line num="65" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="68" count="4" type="stmt"/>
-        <line num="69" count="4" type="stmt"/>
-        <line num="70" count="98" type="stmt"/>
-        <line num="72" count="4" type="stmt"/>
-        <line num="76" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="77" count="1" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
-        <line num="79" count="32" type="stmt"/>
-        <line num="81" count="1" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="96" type="stmt"/>
       </file>
     </package>
     <package name="common">
@@ -410,21 +393,21 @@
         <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
         <line num="1" count="12" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
-        <line num="10" count="6" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
         <line num="23" count="2" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
       </file>
     </package>
     <package name="common.tree">

@@ -14,7 +14,7 @@ export {
   type BinaryNode,
   LeftBalancedBinaryTree,
 } from "./tree";
-export { type ISigningService, runSigningTests } from "./signing";
+export { type ISigningService, runHmacTests } from "./signing";
 export {
   type IKeyGeneration,
   type KeyDerivationFunction,

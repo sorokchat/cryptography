@@ -1,6 +1,9 @@
 import { beforeEach, describe, expect, it } from "@jest/globals";
 import { type ISigningService } from "../../common";
-export function runSigningTests(environment: string, factory: () => ISigningService): void {
+export function runHmacTests(
+  environment: string,
+  factory: () => ISigningService,
+): void {
   describe(`${environment} HMAC Signing`, () => {
     let service: ISigningService;
     const plaintext: string = "text";
@@ -21,7 +24,7 @@ export function runSigningTests(environment: string, factory: () => ISigningServ
     });
 
     it("should falsy verify sign", async () => {
-      const verified = await service.verify("test", "example", "password");
+      const verified = await service.verify("b", "example", "password");
       expect(verified).toBeFalsy();
     });
   });
